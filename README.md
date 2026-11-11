@@ -1,282 +1,193 @@
-# 🚀 Team Task Manager
+# Team Task Manager
 
-A full-stack MERN application for managing team projects and tasks with role-based access control (RBAC).
-Users can create projects, assign tasks, track progress, and manage team collaboration efficiently.
+A full-stack MERN application designed to simplify team collaboration, project organization, and task tracking. The application provides role-based access control, allowing administrators to manage projects and tasks while team members can view and update their assigned work.
 
----
+## Live Demo
 
-# 🌐 Live Demo
+- **Frontend:** https://team-task-manager-client-olive.vercel.app
+- **Backend API:** https://team-task-manager-server-azgz.onrender.com
 
-## Frontend (Vercel)
+## Features
 
-https://team-task-manager-client-olive.vercel.app
+### Authentication & Security
+- User registration and login
+- JWT-based authentication
+- Secure password hashing using bcrypt
+- Protected routes
+- Role-based access control (RBAC)
 
-## Backend (Render)
+### Project Management
+- Create, view, edit, and delete projects
+- Add team members to projects
+- View project members
+- Manage project activities
 
-https://team-task-manager-server-azgz.onrender.com
-
----
-
-# 📌 Features
-
-## 🔐 Authentication
-
-- User Signup/Login
-- JWT Authentication
-- Protected Routes
-- Secure Password Hashing
-
----
-
-# 👥 Role-Based Access Control (RBAC)
-
-## 👨‍💼 Admin
-
-- Create/Edit/Delete Projects
-- Add Members to Projects
-- Create/Edit/Delete Tasks
-- Manage all tasks
-- View dashboard analytics
-
-## 👨‍💻 Member
-
-- View assigned tasks only
+### Task Management
+- Create and assign tasks to team members
+- Edit and delete tasks
 - Update task status
-- Track project progress
+- Filter tasks based on status
+- Identify overdue tasks
 
----
+### Role-Based Access Control
 
-# 📋 Project Management
+**Admin**
+- Create, edit, and delete projects
+- Add team members
+- Create, assign, edit, and delete tasks
+- View dashboard analytics
+- Manage project activities
 
-- Create Projects
-- Edit/Delete Projects
-- Add Team Members
-- View Project Members
+**Member**
+- View assigned tasks
+- Update task status
+- Track assigned work and progress
 
----
+### Dashboard
+- Total tasks
+- Completed tasks
+- Pending tasks
+- In-progress tasks
+- Overdue tasks
 
-# ✅ Task Management
+## Tech Stack
 
-- Create Tasks
-- Assign Tasks to Members
-- Edit/Delete Tasks
-- Update Task Status
-- Filter Tasks by Status
-- Overdue Task Detection
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, Vite |
+| Styling | Tailwind CSS |
+| Backend | Node.js, Express.js |
+| Database | MongoDB Atlas, Mongoose |
+| Authentication | JWT, bcryptjs |
+| API Communication | Axios, REST APIs |
+| Routing | React Router |
+| Deployment | Vercel, Render |
 
----
+## Project Structure
 
-# 📊 Dashboard Analytics
-
-- Total Tasks
-- Completed Tasks
-- Pending Tasks
-- In Progress Tasks
-- Overdue Tasks
-
----
-
-# 🎨 Frontend Features
-
-- Responsive UI
-- Mobile-Friendly Navbar
-- Toast Notifications
-- Loading States
-- Modern Tailwind CSS Design
-- Protected Routing
-- Task Status Badges
-- Empty State UI
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-
-- React.js
-- Vite
-- Tailwind CSS
-- Axios
-- React Router DOM
-- React Toastify
-
-## Backend
-
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
-- JWT Authentication
-- bcryptjs
-
-## Deployment
-
-- Frontend → Vercel
-- Backend → Render
-
----
-
-# 📂 Folder Structure
-
+```text
 team-task-manager/
 │
 ├── client/
-│ ├── src/
-│ ├── components/
-│ ├── pages/
-│ ├── services/
-│ ├── context/
-│ └── App.jsx
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       ├── context/
+│       ├── pages/
+│       ├── services/
+│       ├── App.jsx
+│       └── main.jsx
 │
 ├── server/
-│ ├── controllers/
-│ ├── middleware/
-│ ├── models/
-│ ├── routes/
-│ ├── config/
-│ └── server.js
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
 │
+├── .gitignore
 └── README.md
-
----
-
-# ⚙️ Installation & Setup
-
-## 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/shoyub/team-task-manager
 ```
 
----
+## Installation & Setup
 
-# 🔧 Backend Setup
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/chandana191300/team-task-manager.git
+cd team-task-manager
+```
+
+### 2. Backend Setup
 
 ```bash
 cd server
 npm install
 ```
 
-## Create .env file inside server folder
+Create a `.env` file inside the server folder:
 
 ```env
-MONGO_URI=your_mongodb_atlas_url
-
-JWT_SECRET=your_secret_key
-
 PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 ```
 
-## Run Backend
+Start the backend:
 
 ```bash
-npm start
+npm run dev
 ```
 
----
+The backend runs at:
 
-# 💻 Frontend Setup
+`http://localhost:5000`
+
+### 3. Frontend Setup
+
+Open another terminal:
 
 ```bash
 cd client
 npm install
 ```
 
-## Create .env file inside client folder
+Create a `.env` file inside the client folder:
 
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
-## Run Frontend
+Start the frontend:
 
 ```bash
 npm run dev
 ```
 
----
+Open the local URL displayed by Vite in your browser.
 
-# 📡 API Endpoints
+## API Endpoints
 
-# Auth Routes
+### Authentication
 
-| Method | Endpoint         |
-| ------ | ---------------- |
-| POST   | /api/auth/signup |
-| POST   | /api/auth/login  |
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/signup` | Register a user |
+| POST | `/api/auth/login` | Login |
 
----
+### Projects
 
-# Project Routes
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/projects` | Get projects |
+| POST | `/api/projects` | Create project |
+| PUT | `/api/projects/:projectId` | Update project |
+| DELETE | `/api/projects/:projectId` | Delete project |
+| PUT | `/api/projects/:projectId/add-member` | Add member |
 
-| Method | Endpoint                            |
-| ------ | ----------------------------------- |
-| GET    | /api/projects                       |
-| POST   | /api/projects                       |
-| PUT    | /api/projects/:projectId            |
-| DELETE | /api/projects/:projectId            |
-| PUT    | /api/projects/:projectId/add-member |
+### Tasks
 
----
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/tasks` | Get tasks |
+| POST | `/api/tasks` | Create task |
+| PUT | `/api/tasks/:taskId` | Update task |
+| DELETE | `/api/tasks/:taskId` | Delete task |
+| PUT | `/api/tasks/:taskId/status` | Update task status |
+| GET | `/api/tasks/dashboard/stats` | Get dashboard statistics |
 
-# Task Routes
+## Environment Variables
 
-| Method | Endpoint                   |
-| ------ | -------------------------- |
-| GET    | /api/tasks                 |
-| POST   | /api/tasks                 |
-| PUT    | /api/tasks/:taskId         |
-| DELETE | /api/tasks/:taskId         |
-| PUT    | /api/tasks/:taskId/status  |
-| GET    | /api/tasks/dashboard/stats |
+Keep all environment variables and database credentials private. Never commit `.env` files to GitHub.
 
----
-
-# 🔐 Role Permissions
-
-| Feature             | Admin | Member |
-| ------------------- | ----- | ------ |
-| Create Project      | ✅    | ❌     |
-| Edit/Delete Project | ✅    | ❌     |
-| Add Members         | ✅    | ❌     |
-| Create Task         | ✅    | ❌     |
-| Edit/Delete Task    | ✅    | ❌     |
-| Update Task Status  | ✅    | ✅     |
-| View Assigned Tasks | ✅    | ✅     |
-
----
-
-# 📱 Responsive Design
-
-The application is fully responsive and works across:
-
-- Desktop
-- Tablet
-- Mobile Devices
-
----
-
-# 🌟 Future Improvements
+## Future Enhancements
 
 - Real-time notifications
-- Drag & Drop Kanban Board
-- Team Chat System
-- File Uploads
-- Dark Mode
-- Activity Logs
-- Email Notifications
+- Kanban board
+- Team chat functionality
+- File attachments
+- Activity tracking
 
----
+## Repository
 
-# 👨‍💻 Author
-
-## Krishna Sai Rayavaram
-
-GitHub:
-https://github.com/shoyub
-
----
-
-# 📄 License
-
-This project was developed for educational and assignment purposes.
+GitHub: https://github.com/chandana191300/team-task-manager
